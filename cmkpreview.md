@@ -58,9 +58,43 @@ The following are requirements for configuring Key Vault:
 * Enable Purge protection to enforce a mandatory retention period for deleted vaults and vault objects
 * Grant the Azure Database for PostgreSQL Flexible server access to the key vault with the get, wrapKey, and unwrapKey permissions by using its unique managed identity.
 
-The following are requirements for configuring the customer-managed key:
+The following are requirements for configuring the customer-managed key in Flexible Server:
 
 * The customer-managed key to be used for encrypting the DEK can be only asymmetric, RSA 2048.
 * The key activation date (if set) must be a date and time in the past. The expiration date (if set) must be a future date and time.
 * The key must be in the *Enabled* state.
 * If you're [importing an existing key](/rest/api/keyvault/ImportKey/ImportKey) into the key vault, make sure to provide it in the supported file formats (`.pfx`, `.byok`, `.backup`).
+
+The following are limitation for configuring the customer-managed key in Flexible Server:
+
+* CMK encryption can only be configured during creation of new server, not as update to existing Flexible Server.
+* Once enabled CMK encryption cannot be removed. If customer desires to remove this feature it can only be done via restore of the server to non-CMK server.
+
+The following are additional limitations for private preview of configuring the customer-managed key that we expect to remove at later date:
+
+* Azure Key Vault must be configured to allow all network access
+* No support for Geo backup enabled servers and  Replicas
+* No support for Azure HSM Key Vault
+* No CLI or PowerShell support
+
+## Inaccessible customer-managed key condition
+
+When you configure data encryption with a customer-managed key in Key Vault, continuous access to this key is required for the server to stay online. If the server loses access to the customer-managed key in Key Vault, the server begins denying all connections within 10 minutes. The server issues a corresponding error message, and changes the server state to *Inaccessible*.
+
+## Setup Customer Managed Key during Server Creation
+
+Follow steps below to enable CMK while creating Postgres Flexible Server:
+
+* Navigate to Azure Database for PostgreSQL - Flexible Server create blade via Azure Portal
+
+* Provide required information on Basics and Networking tabs
+<img  src="./media/create1.png" alt-text="create screen for PostgreSQL Flex Server" />
+* Navigate to Security(preview) tab, provide AAD identity that has access to the Key Vault and Key in Key Vault in the same region where you are creating this server
+<img  src="./media/create2.png" alt-text="create security screen for PostgreSQL Flex Server" />
+* On Review Summary tab make sure that you provided correct information in Security section and press Create button
+<img  src="./media/create3.png" alt-text="summary screen for PostgreSQL Flex Server" />
+* Once  is created you should be able to navigate to Data Encryption (preview) screen for the server and update identity or key if necessary
+<img  src="./media/edit1.png" alt-text="encryption preview screen for PostgreSQL Flex Server" />
+
+
+## Update Customer Managed Key on the Server running under CMK feature
