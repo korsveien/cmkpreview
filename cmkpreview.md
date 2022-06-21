@@ -88,13 +88,37 @@ Follow steps below to enable CMK while creating Postgres Flexible Server:
 * Navigate to Azure Database for PostgreSQL - Flexible Server create blade via Azure Portal
 
 * Provide required information on Basics and Networking tabs
+
 <img  src="./media/create1.png" alt-text="create screen for PostgreSQL Flex Server" />
+
 * Navigate to Security(preview) tab, provide AAD identity that has access to the Key Vault and Key in Key Vault in the same region where you are creating this server
+
 <img  src="./media/create2.png" alt-text="create security screen for PostgreSQL Flex Server" />
+
 * On Review Summary tab make sure that you provided correct information in Security section and press Create button
+
 <img  src="./media/create3.png" alt-text="summary screen for PostgreSQL Flex Server" />
+
 * Once  is created you should be able to navigate to Data Encryption (preview) screen for the server and update identity or key if necessary
+
 <img  src="./media/edit1.png" alt-text="encryption preview screen for PostgreSQL Flex Server" />
 
+## Update Customer Managed Key on the CMK enabled Flexible Server
 
-## Update Customer Managed Key on the Server running under CMK feature
+Follow steps below to update CMK on CMK enabled Flexible Server:
+
+* Navigate to Azure Database for PostgreSQL - Flexible Server create blade via Azure Portal.
+* Navigate to Data Encryption (preview) screen under Security tab
+
+<img  src="./media/edit1.png" alt-text="encryption preview screen for PostgreSQL Flex Server" />
+
+* Select different identity to connect to Azure Key Vault , remembering that this identity needs to have proper access rights to the Key Vault
+
+<img  src="./media/identity1.png" alt-text="identity pick for PostgreSQL Flex Server" />
+
+* Select different key by choosing subscription, Key Vault and key from dropdowns provided.
+<img  src="./media/key1.png" alt-text="Key pick for PostgreSQL Flex Server" />
+
+## Contact Us
+For any questions and feedback, please reach out to 
+FlexCMKPreview@microsoft.com
