@@ -69,6 +69,7 @@ The following are limitation for configuring the customer-managed key in Flexibl
 
 * CMK encryption can only be configured during creation of new server, not as update to existing Flexible Server.
 * Once enabled CMK encryption cannot be removed. If customer desires to remove this feature it can only be done via restore of the server to non-CMK server.
+* CMK encryption is not available on Burstable SKU.
 
 The following are additional limitations for private preview of configuring the customer-managed key that we expect to remove at later date:
 
