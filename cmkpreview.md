@@ -71,12 +71,15 @@ The following are limitation for configuring the customer-managed key in Flexibl
 * Once enabled CMK encryption cannot be removed. If customer desires to remove this feature it can only be done via restore of the server to non-CMK server.
 * CMK encryption is not available on Burstable SKU.
 
+
 The following are additional limitations for private preview of configuring the customer-managed key that we expect to remove at later date:
 
 * Azure Key Vault must be configured to allow all network access
 * No support for Geo backup enabled servers and  Replicas
 * No support for Azure HSM Key Vault
 * No CLI or PowerShell support
+* No HA failover support (being actively resolved)
+
 
 ## Inaccessible customer-managed key condition
 
