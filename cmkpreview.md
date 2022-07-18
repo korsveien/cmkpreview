@@ -41,6 +41,7 @@ The DEKs, encrypted with the KEKs, are stored separately. Only an entity with ac
 For a PostgreSQL server to use customer-managed keys stored in Key Vault for encryption of the DEK, a Key Vault administrator gives the following access rights to the server:
 
 * **get**: For retrieving the public part and properties of the key in the key vault.
+* **list**: For listing\iterating through keys in the key vault.
 * **wrapKey**: To be able to encrypt the DEK. The encrypted DEK is stored in the Azure Database for PostgreSQL.
 * **unwrapKey**: To be able to decrypt the DEK. Azure Database for PostgreSQL needs the decrypted DEK to encrypt/decrypt the data
 
@@ -79,6 +80,19 @@ The following are additional limitations for private preview of configuring the 
 * No support for Azure HSM Key Vault
 * No CLI or PowerShell support
 * No HA failover support (being actively resolved)
+
+The following regions are not available for private preview of configuring the customer-managed key:
+* Austalia Central
+* Australia Southeast
+* Brazil South
+* Canada East
+* US East 2
+* Germany North
+* Central India
+* Japan West
+* UK West
+* West US 3
+
 
 
 ## Inaccessible customer-managed key condition
