@@ -75,11 +75,11 @@ The following are limitation for configuring the customer-managed key in Flexibl
 
 The following are additional limitations for private preview of configuring the customer-managed key that we expect to remove at later date:
 
-* Azure Key Vault must be configured to allow all network access
+* Azure Key Vault must be configured to allow all network access (has been resolved)
 * No support for Geo backup enabled servers and  Replicas
-* No support for Azure HSM Key Vault
+* No support for Azure HSM Key Vault (Planned for GA)
 * No CLI or PowerShell support
-* No HA failover support (being actively resolved)
+* No HA failover support (Has been resolved)
 
 The following regions are not available for private preview of configuring the customer-managed key:
 * Austalia Central
